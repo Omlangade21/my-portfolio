@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Om Langade - Get in touch for collaborations and projects">
+  <title>Contact | Om Langade</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+
+  <section class="container" style="flex: 1; max-width: 1200px; padding-top: 100px; padding-bottom: 100px;">
+    <div class="contact-section" style="align-items: start;">
+      <div class="contact-info fade-in-up">
+        <h2 style="margin-bottom: 24px;">Let's Build Something Great</h2>
+        <p style="margin-bottom: 40px; line-height: 1.8;">
+          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. 
+          Whether you have a question or just want to say hi, feel free to reach out!
+        </p>
+        
+        <div class="contact-links" style="gap: var(--spacing-md);">
+          <a href="https://github.com/Omlangade21" target="_blank" class="contact-link">
+            <span class="icon">📦</span>
+            <div>
+              <span class="label">GitHub</span>
+              <span class="value">github.com/Omlangade21</span>
+            </div>
+          </a>
+          
+          <a href="https://linkedin.com/in/om-langade-513262248" target="_blank" class="contact-link">
+            <span class="icon">💼</span>
+            <div>
+              <span class="label">LinkedIn</span>
+              <span class="value">linkedin.com/in/om-langade-513262248</span>
+            </div>
+          </a>
+          
+          <a href="mailto:om21langade@gmail.com" class="contact-link">
+            <span class="icon">✉️</span>
+            <div>
+              <span class="label">Email</span>
+              <span class="value">om21langade@gmail.com</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form-container fade-in-up">
+        <form name="contactForm" onsubmit="return validateForm()" class="contact-form" style="padding: 36px;">
+          <input type="text" name="name" placeholder="Enter your name" style="padding: 16px; margin-bottom: 20px; height: 56px;">
+          <input type="email" name="email" placeholder="Enter your email" style="padding: 16px; margin-bottom: 20px; height: 56px;">
+          <textarea name="message" placeholder="Enter message" style="padding: 16px; margin-bottom: 24px; min-height: 150px;"></textarea>
+          <button type="submit" style="padding: 16px; margin-bottom: 24px;">Send</button>
+          
+          <a
+            href="submissions.html"
+            class="hero-cta"
+            style="
+              display: block;
+              text-align: center;
+              background: transparent;
+              border: 2px solid var(--accent-blue);
+              color: var(--accent-blue);
+              box-shadow: none;
+            "
+            onmouseover="this.style.background='var(--bg-glass-hover)'; this.style.boxShadow='0 0 25px var(--accent-glow)';"
+            onmouseout="this.style.background='transparent'; this.style.boxShadow='none';"
+          >
+            View Submitted Messages
+          </a>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Om Langade. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

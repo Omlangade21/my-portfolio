@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Form Submissions - Messages stored using LocalStorage">
+  <title>Contact Form Submissions | Om Langade</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @media (max-width: 768px) {
+      .container {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+        padding-left: var(--spacing-sm) !important;
+        padding-right: var(--spacing-sm) !important;
+      }
+      .glass-card {
+        padding: 24px !important;
+        border-radius: 16px !important;
+      }
+      #clear-submissions-btn {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+    @media (max-width: 480px) {
+      .glass-card {
+        padding: 20px !important;
+      }
+      .glass-card h3 {
+        font-size: 1.1rem !important;
+      }
+      .glass-card p {
+        font-size: 0.95rem !important;
+      }
+    }
+  </style>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="container" style="flex: 1; max-width: 1100px; padding-top: 100px; padding-bottom: 100px;">
+    <div class="fade-in-up" style="text-align: center; margin-bottom: 60px;">
+      <h2 class="section-title" style="margin-bottom: 16px;">Contact Form Submissions</h2>
+      <p style="color: var(--text-secondary); font-size: 1.1rem;">Messages stored using LocalStorage</p>
+    </div>
+
+    <div id="submissions-container" class="fade-in-up"></div>
+
+    <div class="fade-in-up" style="text-align: center; margin-top: 50px;">
+      <button
+        id="clear-submissions-btn"
+        type="button"
+        class="hero-cta"
+        style="
+          background: transparent;
+          border: 2px solid var(--accent-blue);
+          color: var(--accent-blue);
+          padding: 14px 32px;
+          font-size: 1rem;
+          box-shadow: none;
+        "
+        onmouseover="this.style.background='var(--bg-glass-hover)'; this.style.boxShadow='0 0 25px var(--accent-glow)';"
+        onmouseout="this.style.background='transparent'; this.style.boxShadow='none';"
+      >
+        Clear All Submissions
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Om Langade. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      const key = "portfolioContacts";
+      const container = document.getElementById("submissions-container");
+      const clearBtn = document.getElementById("clear-submissions-btn");
+
+      function formatValue(v) {
+        return (v === undefined || v === null) ? "" : String(v);
+      }
+
+      function render() {
+        let submissions = [];
+        try {
+          const raw = localStorage.getItem(key);
+          if (raw) submissions = JSON.parse(raw);
+          if (!Array.isArray(submissions)) submissions = [];
+        } catch (e) {
+          submissions = [];
+        }
+
+        const ordered = submissions.slice().reverse();
+
+        if (ordered.length === 0) {
+          container.innerHTML = `
+            <div class="glass-card fade-in-up" style="
+              text-align: center;
+              padding: 80px;
+              max-width: 600px;
+              margin: 0 auto;
+            ">
+              <div style="font-size: 4rem; margin-bottom: 24px;">📬</div>
+              <h3 style="
+                font-family: var(--font-heading);
+                font-size: 1.5rem;
+                color: var(--text-primary);
+                margin-bottom: 12px;
+              ">No submissions yet</h3>
+              <p style="
+                color: var(--text-secondary);
+                font-size: 1rem;
+                line-height: 1.6;
+              ">Messages submitted through the contact form will appear here.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = `
+          <div style="
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            max-width: 900px;
+            margin: 0 auto;
+          ">
+            ${ordered.map(s => `
+              <div class="glass-card fade-in-up" style="
+                border-radius: 20px;
+                padding: 32px;
+                backdrop-filter: var(--glass-blur);
+                -webkit-backdrop-filter: var(--glass-blur);
+                border: 1px solid var(--glass-border);
+                box-shadow: var(--glass-shadow);
+              ">
+                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: 20px;">
+                  <span style="font-size: 1.5rem;">👤</span>
+                  <h3 style="font-family: var(--font-heading); color: var(--accent-blue); font-size: 1.3rem; margin: 0; font-weight: 600;">
+                    ${formatValue(s.name)}
+                  </h3>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                  <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: 16px;">
+                    <span style="font-size: 1.2rem;">📧</span>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 1rem;">
+                      ${formatValue(s.email)}
+                    </p>
+                  </div>
+
+                  <div style="display: flex; align-items: flex-start; gap: var(--spacing-sm);">
+                    <span style="font-size: 1.2rem;">💬</span>
+                    <p style="color: var(--text-secondary); margin: 0; line-height: 1.7; flex: 1; font-size: 1rem;">
+                      ${formatValue(s.message)}
+                    </p>
+                  </div>
+                </div>
+
+                <div style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  padding-top: 20px;
+                  border-top: 1px solid var(--glass-border);
+                ">
+                  <div style="display: flex; align-items: center; gap: var(--spacing-xs);">
+                    <span style="font-size: 1rem;">📅</span>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">
+                      ${formatValue(s.date)}
+                    </p>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: var(--spacing-xs);">
+                    <span style="font-size: 1rem;">🕒</span>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">
+                      ${formatValue(s.time)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        `;
+
+        const animated = container.querySelectorAll(".glass-card");
+        animated.forEach(el => {
+          el.classList.add("fade-in-up");
+          el.classList.add("visible");
+        });
+      }
+
+      clearBtn.addEventListener("click", function () {
+        const ok = confirm("Are you sure?");
+        if (!ok) return;
+
+        localStorage.removeItem(key);
+        render();
+      });
+
+      document.addEventListener("DOMContentLoaded", render);
+    })();
+  </script>
+</body>
+</html>
