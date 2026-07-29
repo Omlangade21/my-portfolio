@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Titanic Data Visualization Dashboard - Data science project exploring passenger demographics and survival patterns">
+  <title>Titanic Dashboard | Om Langade</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="container">
+    <div class="about-section">
+      <div class="about-content fade-in-up">
+        <h2>Titanic Data Visualization Dashboard</h2>
+        <p>
+          A comprehensive data science project exploring the Titanic dataset through advanced data cleaning, feature engineering, and visual storytelling. Using pandas, seaborn, and matplotlib, I engineered new features like FamilySize and AgeGroup, then created six insightful visualizations revealing patterns in passenger demographics, survival rates, and socioeconomic factors that influenced outcomes during the historic disaster.
+        </p>
+        <div class="tech-stack" style="margin-top: 1rem;">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Pandas</span>
+          <span class="tech-tag">Seaborn</span>
+          <span class="tech-tag">Matplotlib</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projects-section fade-in-up">
+      <h2>Visualizations & Insights</h2>
+      
+      <div class="project-item fade-in-up">
+        <img src="projects/titanic-dashboard/images/age_distribution.png" alt="Age Distribution" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+        <h3>Age Distribution</h3>
+        <p>The age distribution shows a right-skewed pattern with most passengers between 20-40 years old. The KDE curve reveals a notable peak around 25-30 years, indicating young adults were the largest demographic group aboard the Titanic.</p>
+      </div>
+
+      <div class="project-item fade-in-up">
+        <img src="projects/titanic-dashboard/images/survival_by_sex.png" alt="Survival by Sex" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+        <h3>Survival Rate by Sex</h3>
+        <p>Females had a dramatically higher survival rate (74.2%) compared to males (18.9%), highlighting the "women and children first" protocol followed during the evacuation. This 4x difference in survival rates is one of the most striking patterns in the dataset.</p>
+      </div>
+
+      <div class="project-item fade-in-up">
+        <img src="projects/titanic-dashboard/images/fare_by_class.png" alt="Fare by Class" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+        <h3>Fare Distribution by Passenger Class</h3>
+        <p>First-class passengers paid significantly higher fares (median ~$60) with many outliers above $100, while third-class fares were much lower (median ~$10). The wide spread in first-class fares indicates substantial wealth inequality even within the upper class.</p>
+      </div>
+
+      <div class="project-item fade-in-up">
+        <img src="projects/titanic-dashboard/images/age_vs_fare_survival.png" alt="Age vs Fare Survival" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+        <h3>Age vs Fare Colored by Survival Status</h3>
+        <p>The scatter plot reveals that higher-paying passengers (green points) had better survival rates, particularly among those who paid over $50. However, age alone doesn't show a clear survival pattern, suggesting fare/class was more influential than age in determining survival outcomes.</p>
+      </div>
+
+      <div class="project-item fade-in-up">
+        <img src="projects/titanic-dashboard/images/correlation_heatmap.png" alt="Correlation Heatmap" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+        <h3>Correlation Heatmap of Numeric Features</h3>
+        <p>The strongest correlation is between Pclass and Fare (-0.55), confirming that higher class numbers (lower class) paid less. Survival shows moderate positive correlation with Fare (0.26) and negative correlation with Pclass (-0.34), indicating wealthier passengers in higher classes had better survival chances.</p>
+      </div>
+
+      <div class="project-item fade-in-up">
+        <img src="projects/titanic-dashboard/images/survival_by_sex_class.png" alt="Survival by Sex and Class" style="width: 100%; border-radius: 12px; margin-bottom: 1rem;">
+        <h3>Survival Count by Sex and Passenger Class</h3>
+        <p>The facet grid reveals that first-class females had the highest survival rates, while third-class males had the lowest. This visualization confirms that both gender and class were critical factors—first-class women survived at much higher rates than third-class men, demonstrating intersectional privilege in the evacuation process.</p>
+      </div>
+
+      <div class="fade-in-up" style="margin-top: 2rem; text-align: center;">
+        <a href="https://nbviewer.org/github/omlangade21/my-portfolio/blob/main/projects/titanic-dashboard/titanic_dashboard_executed.ipynb" target="_blank" class="hero-cta" style="display: inline-block; margin-top: 1rem;">
+          View Full Notebook
+        </a>
+        <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.9rem;">
+          Opens in nbviewer.org for easy in-browser viewing
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Om Langade. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
