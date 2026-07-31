@@ -6,6 +6,39 @@
   <meta name="description" content="Titanic Data Visualization Dashboard - Data science project exploring passenger demographics and survival patterns">
   <title>Titanic Dashboard | Om Langade</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .project-item {
+      margin-bottom: 2rem !important;
+      overflow: hidden;
+    }
+    
+    .project-item img {
+      max-height: 500px;
+      object-fit: contain;
+      background: var(--bg-tertiary);
+    }
+    
+    .project-item h3 {
+      margin-top: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .project-item p {
+      margin-bottom: 0;
+    }
+    
+    .project-item:hover {
+      transform: translateY(-5px) !important;
+      z-index: 10;
+      position: relative;
+    }
+    
+    @media (max-width: 768px) {
+      .project-item img {
+        max-height: 350px;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav>
